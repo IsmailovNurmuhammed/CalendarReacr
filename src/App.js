@@ -21,9 +21,15 @@ function App() {
   const setToday = () => {
     setCurrentMonth(new Date().getMonth());
   }
-
+  const search = (key, array) => {
+    for (let i = 0; i < array.length; i++) {
+      if (array[i].date === key) {
+        return array[i]
+      }
+    }
+  }
   const updateDays = () => {
-    console.log("update---------------------")
+    console.log('updates')
     const date = new Date();
 
     if (currentMonth !== 0) {
@@ -116,7 +122,8 @@ function App() {
         selected && eventForDate(selected) && (
           <DeleteEvent
             updateEvent={(title, description) => {
-              setEvents([...events, {date: selected, title: title, description: description}])
+              const event = search(selected, events)
+              setEvents([...events, event.title = title, event.description = description])
               setSelected(null);
             }}
             currentMonth={currentMonth}

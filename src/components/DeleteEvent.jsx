@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
 
 const DeleteEvent = ({onDelete, onClose, event, description, modalDate, eventDate, updateEvent}) => {
-  console.log(eventDate);
   const local = JSON.parse(localStorage.getItem("events"))
-  console.log(local)
   const [eventItem, setEvent] = useState(event);
   const [descriptionItem, setDescription] = useState(description);
 
@@ -20,8 +18,10 @@ const DeleteEvent = ({onDelete, onClose, event, description, modalDate, eventDat
     console.log(item)
     item.title = eventItem;
     item.description = descriptionItem;
+    console.log(eventItem);
+    console.log(descriptionItem)
     localStorage.setItem("events", JSON.stringify(local));
-    updateEvent(eventItem, descriptionItem);
+    updateEvent(eventItem, descriptionItem)
     onClose();
   }
   return (
